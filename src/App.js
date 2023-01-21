@@ -3,65 +3,50 @@ import React from 'react';
 import {Titulo} from './titulo'
 import { FiltroCiudades } from './FiltroCiudades';
 import { Iglesias } from './iglesias';
-
-const jsonIglesias = [
-  {
-      "nombre":"MMM Boston",
-      "pastor":"Pedro David Gamez",
-      "dirección":"cll 56 # 36a 32",
-      "Barrio":"Boston",
-      "Ciudad":"Medellin",
-      "Departamento":"Antioquia",
-      "Telefono":"6045055228",
-      "Imagen":"boston.jpg"
-  },
-  {
-      "nombre":"MMM Caicedo",
-      "pastor":"Hugo Marin",
-      "dirección":"cll 56 # 36a 32",
-      "Barrio":"Caicedo",
-      "Ciudad":"Medellin",
-      "Departamento":"Antioquia",
-      "Telefono":"1234567",
-      "Imagen":"boston.jpg"
-  },
-  {
-      "nombre":"MMM Enciso",
-      "pastor":"Damil Arteaga",
-      "dirección":"cll 56 # 36a 32",
-      "Barrio":"Enciso",
-      "Ciudad":"Cali",
-      "Departamento":"Valle del cauca",
-      "Telefono":"12345",
-      "Imagen":"boston.jpg"
-  },
-  {
-      "nombre":"MMM Sede Centro",
-      "pastor":"Pablo Castro",
-      "dirección":"cll 56 # 36a 32",
-      "Barrio":"Centro",
-      "Ciudad":"Bogota",
-      "Departamento":"Bogota",
-      "Telefono":"3216547",
-      "Imagen":"boston.jpg"
-  }
-] 
+import { Modal } from './Modal'
+import { Firebase } from './firebase';
 
 
-
-function App() {
-  const [departamento, setDepartamento] = React.useState("Departamento")
-  const [ciudad, setCiudad] = React.useState("Ciudad")
-  const listDepartamentos = []
-
+   function App() {
+    const [jsonIglesias, setJsonIglesias] = React.useState([])
+    const [departamento, setDepartamento] = React.useState("Departamento")
+    const [ciudad, setCiudad] = React.useState("Ciudad")
+    const [igle, setIgle] = React.useState(<h1>Esto es otra prueba</h1>)
+    const [detail, setDetail] = React.useState(false)
+    const [datosCiudad, setDatosCiudad] = React.useState([])
+    const [datos, setDatos] = React.useState([])
+    const [listDep, setListDep] = React.useState([])
   
-  const datos = departamento === "Departamento" ?jsonIglesias:jsonIglesias.filter(dato => dato.Departamento === departamento)
-  const datosCiudad = ciudad === "Ciudad" ?datos:datos.filter(dato => dato.Ciudad === ciudad)
+    const listDepartamentos = []
 
-  jsonIglesias.forEach(e=>{
-    if (!listDepartamentos.includes(e.Departamento))
-    listDepartamentos.push(e.Departamento)
-  })
+    const fetchData = async () => {
+      const D = await Firebase
+      console.log("D")
+      console.log(D)
+      setJsonIglesias(D)
+      console.log("jsonIglesias")
+      console.log(jsonIglesias)
+      D.forEach(e=>{
+        if (!listDepartamentos.includes(e.Departamento))
+        {console.log(e.Departamento)
+        listDepartamentos.push(e.Departamento)}
+      })
+      console.log("listDepartamentos")
+      console.log(listDepartamentos)
+      setListDep(listDepartamentos)
+      setDatos(departamento === "Departamento" ?D:D.filter(dato => dato.Departamento === departamento))
+      setDatosCiudad(ciudad === "Ciudad" ?datos:datos.filter(dato => dato.Ciudad === ciudad))
+
+      
+    }
+
+    React.useEffect(()=>{
+      
+      fetchData()
+      
+    },[jsonIglesias])
+  
+
   return (
     <div className="App">
       <Titulo/>
@@ -69,13 +54,18 @@ function App() {
         datos = {datos}
         departamentos = {departamento}
         setDepartamento = {setDepartamento}
-        listDep = {listDepartamentos.sort()}
+        listDep = {listDep.sort()}
         setCiudad = {setCiudad}
       />
       <Iglesias
         datosCiudad = {datosCiudad}
+        setIgle = {setIgle}
+        setDetail = {setDetail}
+        detail = {detail}
       />
-      
+      {!!detail && (<Modal>
+        {igle}
+      </Modal>)}
     </div>
   );
 }

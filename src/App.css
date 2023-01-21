@@ -45,7 +45,8 @@
 }
 .iglesia{
   margin: 10px;
-  max-width: 300px;
+  
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +55,8 @@
   border-radius: 10px;
   gap: 7px;
   border: solid 2px #F2A71B;
+  background: #fff;
+  color: #282c34;
 }
 .Iglesias{
   margin-top: 30px;
@@ -93,6 +96,7 @@ footer{
   text-align: right;
   color: blue;  
   cursor: pointer;
+  z-index: 1;
 }
 
 .detalle{
@@ -116,4 +120,26 @@ select:focus{
   border:none;
   outline: none;
   
+}
+.cerrarButton {
+  background-color: #F2A71B;
+  box-shadow: 0px 5px 25px rgba(250, 204, 97, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 50px;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  font-weight: bold;
+  color: #FAFAFA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+  z-index: 1;
+}
+.detalleIglesia{
+  text-align:  center;
 }
