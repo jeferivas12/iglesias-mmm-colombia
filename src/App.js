@@ -5,6 +5,7 @@ import { FiltroCiudades } from './FiltroCiudades';
 import { Iglesias } from './iglesias';
 import { Modal } from './Modal'
 import { Firebase } from './firebase';
+import { Agregar } from './agregar';
 
 
    function App() {
@@ -16,23 +17,19 @@ import { Firebase } from './firebase';
     const [datosCiudad, setDatosCiudad] = React.useState([])
     const [datos, setDatos] = React.useState([])
     const [listDep, setListDep] = React.useState([])
-  
+    const [crearIglesia, setCrearIglesia] = React.useState(false)
     const listDepartamentos = []
 
     const fetchData = async () => {
       const D = await Firebase
-      console.log("D")
-      console.log(D)
+      
       setJsonIglesias(D)
-      console.log("jsonIglesias")
-      console.log(jsonIglesias)
+      
       D.forEach(e=>{
         if (!listDepartamentos.includes(e.Departamento))
-        {console.log(e.Departamento)
-        listDepartamentos.push(e.Departamento)}
+        {listDepartamentos.push(e.Departamento)}
       })
-      console.log("listDepartamentos")
-      console.log(listDepartamentos)
+      
       setListDep(listDepartamentos)
       setDatos(departamento === "Departamento" ?D:D.filter(dato => dato.Departamento === departamento))
       setDatosCiudad(ciudad === "Ciudad" ?datos:datos.filter(dato => dato.Ciudad === ciudad))
@@ -44,7 +41,7 @@ import { Firebase } from './firebase';
       
       fetchData()
       
-    },[jsonIglesias])
+    },[jsonIglesias, datosCiudad])
   
 
   return (
@@ -56,6 +53,9 @@ import { Firebase } from './firebase';
         setDepartamento = {setDepartamento}
         listDep = {listDep.sort()}
         setCiudad = {setCiudad}
+        setCrearIglesia = {setCrearIglesia}
+        crearIglesia = {crearIglesia}
+        setDatosCiudad = {setDatosCiudad}
       />
       <Iglesias
         datosCiudad = {datosCiudad}
@@ -63,9 +63,14 @@ import { Firebase } from './firebase';
         setDetail = {setDetail}
         detail = {detail}
       />
+      {/* <button onClick={setCrearIglesia(!crearIglesia)}>Crear iglesia</button> */}
+      {!! crearIglesia && (<Modal><Agregar crearIglesia = {setCrearIglesia}/></Modal>)}
+          
+      
       {!!detail && (<Modal>
         {igle}
       </Modal>)}
+      
     </div>
   );
 }

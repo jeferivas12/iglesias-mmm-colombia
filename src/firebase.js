@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-import { getFirestore, collection, getDocs/*, addDoc */} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-lite.js';
+import { getFirestore, collection, getDocs, addDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-lite.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_lDYORlDxwYNGmlGc9eqObonfeQNJEfY",
@@ -20,9 +20,10 @@ const db = getFirestore(app);
 const getIglesia = () => getDocs(collection(db,'iglesias'))
 
 //console.log("si funciona")
-/*export const setIglesia = (nombre,pastor,Barrio,Ciudad,Departamento,direccion,Telefono) => {
+const SetIglesia = async (nombre,pastor,Barrio,Ciudad,Departamento,direccion,Telefono,Zona) => {
+  await addDoc(collection(db,'iglesias'),{nombre,pastor,Barrio,Ciudad,Departamento,direccion,Telefono,Zona,Imagen:"boston.jpg"} )
  console.log(nombre+pastor+direccion)
-}*/
+}
 
 const fFirebase = async () =>
 {
@@ -30,19 +31,15 @@ const fFirebase = async () =>
   
   try{
    // const modFirebase = await import("./firebase.js")
-    
     const queryData =  await getIglesia()
     queryData.forEach(doc => jsonIglesias.push(doc.data()))
-    //console.log(queryData)
-    console.log("Json Iglesia")
-    console.log(jsonIglesias)
-    //cargaDatos()
-  } catch(error){
-      console.error(error);
+  }
+  catch(error){
+    console.error(error);
   }
 
 return jsonIglesias
 }
 const Firebase = fFirebase()
 
-export {Firebase}
+export {Firebase, SetIglesia}

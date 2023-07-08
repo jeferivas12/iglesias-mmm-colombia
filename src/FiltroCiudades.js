@@ -6,6 +6,14 @@ function FiltroCiudades(props){
         //console.log(props.departamentos)
         //console.log(props.datos)
     }
+    const actualizaCiudad = (e) =>{
+        props.setCiudad(e.target.value)
+        if (!e.target.value === "Ciudad")
+        props.setDatosCiudad(props.datos.filter(dato => dato.Ciudad === e.target.value))
+    }
+    const nuevaIglesia = () =>{
+        props.setCrearIglesia(!props.crearIglesia)
+    }
     let ciudades = []
     return (
         <React.Fragment>
@@ -16,7 +24,7 @@ function FiltroCiudades(props){
                 })}
                 
             </select>
-            <select name="Ciudad">
+            <select name="Ciudad" onChange = {actualizaCiudad}>
                 <option value="ciudad" defaultValue>ciudad</option>
                 { props.datos.map(element => {
                     if (!ciudades.includes(element.Ciudad)){
@@ -28,6 +36,7 @@ function FiltroCiudades(props){
                 
                 }
             </select>
+            <button onClick={nuevaIglesia}>Agregar Iglesia</button>
         </React.Fragment>
     )
 }
