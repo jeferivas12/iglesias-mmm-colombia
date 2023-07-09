@@ -1,19 +1,21 @@
 import React from "react";
 
 function FiltroCiudades(props){
+    
     const actualizaDepartamento = (event)=>{
+             
+        props.setDatosCiudad(event.target.value === "Departamento" ?props.iglesias:props.iglesias.filter(dato => dato.Departamento === event.target.value))
         props.setDepartamento(event.target.value)
-        //console.log(props.departamentos)
-        //console.log(props.datos)
     }
+
     const actualizaCiudad = (e) =>{
-        props.setCiudad(e.target.value)
-        if (!e.target.value === "Ciudad")
-        props.setDatosCiudad(props.datos.filter(dato => dato.Ciudad === e.target.value))
+        props.setCiudad(e.target.value)        
     }
+
     const nuevaIglesia = () =>{
         props.setCrearIglesia(!props.crearIglesia)
     }
+    
     let ciudades = []
     return (
         <React.Fragment>
@@ -25,9 +27,9 @@ function FiltroCiudades(props){
                 
             </select>
             <select name="Ciudad" onChange = {actualizaCiudad}>
-                <option value="ciudad" defaultValue>ciudad</option>
-                { props.datos.map(element => {
-                    if (!ciudades.includes(element.Ciudad)){
+                <option value="Ciudad" defaultValue>ciudad</option>
+                { props.iglesias.map(element => {
+                    if (!ciudades.includes(element.Ciudad) & element.Departamento === props.departamento){
                         ciudades.push(element.Ciudad)
                         return <option key={element.Ciudad} value= {element.Ciudad} >{element.Ciudad}</option>
                     
