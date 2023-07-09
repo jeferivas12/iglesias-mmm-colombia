@@ -74,7 +74,7 @@ import { Agregar } from './agregar';
         iglesias={iglesias}
       />
       {/* <button onClick={setCrearIglesia(!crearIglesia)}>Crear iglesia</button> */}
-      {!! crearIglesia && (<Modal><Agregar crearIglesia = {setCrearIglesia}/></Modal>)}
+      {!! crearIglesia && (<Modal><Agregar crearIglesia = {setCrearIglesia} setIglesias = {setIglesias}/></Modal>)}
           
       
       {!!detail && (<Modal>

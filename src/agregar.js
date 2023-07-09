@@ -42,7 +42,7 @@ function Agregar(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.crearIglesia(false)
-        SetIglesia(nombre, Pastor, Barrio, Ciudad, Departamento, Direccion, Telefono, Zona)
+        SetIglesia(nombre, Pastor, Barrio, Ciudad, Departamento, Direccion, Telefono, Zona)        
         setNombre("")
     }
     const cancel = () => {

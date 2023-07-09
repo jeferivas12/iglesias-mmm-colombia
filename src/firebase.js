@@ -23,6 +23,7 @@ const getIglesia = () => getDocs(collection(db,'iglesias'))
 const SetIglesia = async (nombre,pastor,Barrio,Ciudad,Departamento,direccion,Telefono,Zona) => {
   await addDoc(collection(db,'iglesias'),{nombre,pastor,Barrio,Ciudad,Departamento,direccion,Telefono,Zona,Imagen:"boston.jpg"} )
  console.log(nombre+pastor+direccion)
+ window.location.href = window.location.href;
 }
 
 const fFirebase = async () =>

@@ -11,7 +11,7 @@ function Iglesia({datos, setIgle, setDetail, detail}){
             <h2>Iglesia {datos.nombre}</h2>
             <h4>Pastor {datos.pastor}</h4>
             <h4>Zona {datos.Zona||""}</h4>
-            <p>Dirección: {datos.dirección}</p>
+            <p>Dirección: {datos.direccion}</p>
             {detalle}
         </div>
     return(

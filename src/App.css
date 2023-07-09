@@ -125,7 +125,7 @@ select:focus{
   
 }
 .agregar{
-  background: rgba(32,35,41,.9);;
+  background: rgba(32,35,41,.7);;
   margin: 15px 150px;
   padding: 20px;
   display: flex;
