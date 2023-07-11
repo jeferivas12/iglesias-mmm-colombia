@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/iglesias-mmm-colombia/static/css/main.5ac61575.chunk.css",
+    "main.js": "/iglesias-mmm-colombia/static/js/main.8feaa753.chunk.js",
+    "main.js.map": "/iglesias-mmm-colombia/static/js/main.8feaa753.chunk.js.map",
+    "runtime-main.js": "/iglesias-mmm-colombia/static/js/runtime-main.af03ca0d.js",
+    "runtime-main.js.map": "/iglesias-mmm-colombia/static/js/runtime-main.af03ca0d.js.map",
+    "static/js/2.4859d8b4.chunk.js": "/iglesias-mmm-colombia/static/js/2.4859d8b4.chunk.js",
+    "static/js/2.4859d8b4.chunk.js.map": "/iglesias-mmm-colombia/static/js/2.4859d8b4.chunk.js.map",
+    "index.html": "/iglesias-mmm-colombia/index.html",
+    "static/css/main.5ac61575.chunk.css.map": "/iglesias-mmm-colombia/static/css/main.5ac61575.chunk.css.map",
+    "static/js/2.4859d8b4.chunk.js.LICENSE.txt": "/iglesias-mmm-colombia/static/js/2.4859d8b4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af03ca0d.js",
+    "static/js/2.4859d8b4.chunk.js",
+    "static/css/main.5ac61575.chunk.css",
+    "static/js/main.8feaa753.chunk.js"
+  ]
+}
