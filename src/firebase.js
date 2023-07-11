@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { initializeApp } from  'firebase/app';//"https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-import { getFirestore, collection, getDocs, addDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-lite.js';
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore/lite'; //'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-lite.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_lDYORlDxwYNGmlGc9eqObonfeQNJEfY",
